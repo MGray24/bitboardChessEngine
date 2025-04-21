@@ -2,7 +2,15 @@
 from pieces import Pawn, Knight, Bishop, Rook, Queen, King
 class Board:
     def __init__(self):
-        whitebitboards = [Pawn('white'), Knight('white'), Bishop('white'), Rook('white'), Queen('white'), King('white')]
+        self.whitebitboards = [
+            Pawn('white'),           
+            Knight('white'), 
+            Bishop('white'), 
+            Rook('white'), 
+            Queen('white'), 
+            King('white')]
+        
+        
         '''
         self.occupancy = { #bitboards for more general pieces
             'white': 0,
@@ -21,5 +29,14 @@ class Board:
         #set starting bitboards, Bottom left is index 0, top right is 63
         pass
 
+    def SetColorBoards(self):
+        all_white = 0
+        for piece in self.whitebitboards:
+            all_white = all_white | piece.bitboard
+
     def update_occupancy(self):
         pass
+
+
+
+    
