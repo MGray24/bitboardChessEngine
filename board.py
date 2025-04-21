@@ -8,9 +8,21 @@ class Board:
             Bishop('white'), 
             Rook('white'), 
             Queen('white'), 
-            King('white')]
+            King('white')
+        ]
+
+        self.blackbitboards = [
+            Pawn('black'),
+            Knight('black'),
+            Bishop('black'),
+            Rook('black'),
+            Queen('black'),
+            King('black')
+        ]
         
-        
+        self.white_pos = 0
+        self.black_pos = 0
+        self.setColorBoards()
         '''
         self.occupancy = { #bitboards for more general pieces
             'white': 0,
@@ -29,10 +41,14 @@ class Board:
         #set starting bitboards, Bottom left is index 0, top right is 63
         pass
 
-    def SetColorBoards(self):
-        all_white = 0
+    def setColorBoards(self):
+        self.white_pos = 0
         for piece in self.whitebitboards:
-            all_white = all_white | piece.bitboard
+            self.white_pos = self.white_pos | piece.bitboard
+
+        self.black_pos = 0
+        for piece in self.blackbitboards:
+            self.black_pos = self.black_pos | piece.bitboard
 
     def update_occupancy(self):
         pass
