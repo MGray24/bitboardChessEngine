@@ -1,8 +1,8 @@
 #for bitboards, the first bit represents a1 (bottom left), it increases by going to the right, then up
-
+from pieces import Pawn, Knight, Bishop, Rook, Queen, King
 class Board:
     def __init__(self):
-        #self.wbitboards =
+        whitebitboards = [Pawn('white'), Knight('white'), Bishop('white'), Rook('white'), Queen('white'), King('white')]
         '''
         self.occupancy = { #bitboards for more general pieces
             'white': 0,
