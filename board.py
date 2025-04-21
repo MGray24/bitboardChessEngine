@@ -29,12 +29,14 @@ class Board:
         #set starting bitboards, Bottom left is index 0, top right is 63
         pass
 
-    def update_occupancy(self):
-        pass
-
-class SetColorBoards:
-
-    def newboard(self):
+    def SetColorBoards(self):
         all_white = 0
         for piece in self.whitebitboards:
             all_white = all_white | piece.bitboard
+
+    def update_occupancy(self):
+        pass
+
+
+
+    
