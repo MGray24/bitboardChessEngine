@@ -3,12 +3,16 @@ import os
 
 class Renderer:
     def __init__(self, screen):
+        # set with set_screen
         self.screen = screen
-        self.screen = pygame.display.set_mode((self.screen.get_width(),int((66/91) * self.screen.get_width())))
-        self.width, self.height = self.screen.get_size()
-        self.DRAW_START = (self.height/66 + 1, self.height/66 + 1)  # where to put top left corner of board
-        self.SQUARE_SIZE = int(self.height * (8/66))
-        self.BOARD_SIZE = self.SQUARE_SIZE * 8
+        self.width, self.height = 0, 0
+        self.DRAW_START = 0  # where to put top left corner of board
+        self.SQUARE_SIZE = 0
+        self.BOARD_SIZE = 0
+        self.images = {}
+        # set with set_screen ^^^^^
+        self.set_screen() # resets dimensions of screen and variables that depend on it
+
         self.LIGHT_COLOR = (240, 217, 181)
         self.DARK_COLOR = (181, 136, 99)
         self.FONT_COLOR = (0, 0, 0)
@@ -29,6 +33,14 @@ class Renderer:
                 images[key] = image
         return images
 
+    def set_screen(self):
+        self.screen = pygame.display.set_mode((self.screen.get_width(),int((66/91) * self.screen.get_width())), pygame.RESIZABLE)
+        self.width, self.height = self.screen.get_size()
+        self.DRAW_START = (self.height / 66 + 1, self.height / 66 + 1)  # where to put top left corner of board
+        self.SQUARE_SIZE = int(self.height * (8 / 66))
+        self.BOARD_SIZE = self.SQUARE_SIZE * 8
+        self.images = self.load_piece_images("assets")
+
     def draw_board(self):
         self.screen.fill("gray30")
         for rank in range(8):
@@ -38,7 +50,24 @@ class Renderer:
                 pygame.draw.rect(self.screen, color, rect)
 
     def draw_pieces(self, board):
-        pass
+
+        for piece in board.whitepieces + board.blackpieces:
+            # Determine the image key: e.g., "wP", "bQ"
+            key = ('w' if piece.color == 'white' else 'b') + piece.name
+
+            # Get the corresponding image
+            image = self.images.get(key)
+            if image is None:
+                continue  # skip if image not found (fallback safe)
+
+            for square in self.get_set_bits(piece.bitboard):
+                file = square % 8
+                rank = square // 8
+                display_rank = 7 - rank  # flip vertically so a1 is bottom-left
+
+                x = file * self.SQUARE_SIZE
+                y = display_rank * self.SQUARE_SIZE
+                self.screen.blit(image, (x+self.DRAW_START[0], y+self.DRAW_START[1]))
 
     def get_set_bits(self, bitboard): # returns numbers 0-63, representing bits that are set
         while bitboard:

@@ -2,7 +2,7 @@
 from pieces import Pawn, Knight, Bishop, Rook, Queen, King
 class Board:
     def __init__(self):
-        self.whitebitboards = [
+        self.whitepieces = [
             Pawn('white'),           
             Knight('white'), 
             Bishop('white'), 
@@ -11,7 +11,7 @@ class Board:
             King('white')
         ]
 
-        self.blackbitboards = [
+        self.blackpieces = [
             Pawn('black'),
             Knight('black'),
             Bishop('black'),
@@ -33,11 +33,11 @@ class Board:
 
     def setColorBoards(self):
         self.white_pos = 0
-        for piece in self.whitebitboards:
+        for piece in self.whitepieces:
             self.white_pos = self.white_pos | piece.bitboard
 
         self.black_pos = 0
-        for piece in self.blackbitboards:
+        for piece in self.blackpieces:
             self.black_pos = self.black_pos | piece.bitboard
 
         self.both_pos = self.white_pos | self.black_pos

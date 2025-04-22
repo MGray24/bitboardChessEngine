@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70ca91cf-b000-4a4a-8066-ee927ff71a89" name="Changes" comment="image folder">
-      <change afterPath="$PROJECT_DIR$/renderer.py" afterDir="false" />
+    <list default="true" id="70ca91cf-b000-4a4a-8066-ee927ff71a89" name="Changes" comment="basic board display">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/sound fx/capture.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/soundfx/capture.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/sound fx/castle.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/soundfx/castle.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/sound fx/click.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/soundfx/click.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/sound fx/game-end.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/soundfx/game-end.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/sound fx/game-start.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/soundfx/game-start.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/sound fx/illegal.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/soundfx/illegal.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/sound fx/move-check.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/soundfx/move-check.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/sound fx/tenseconds.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/soundfx/tenseconds.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/renderer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745293986051</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="basic board display">
+      <option name="closed" value="true" />
+      <created>1745357164374</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1745357164374</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -151,6 +151,7 @@
     <MESSAGE value="Made piece class" />
     <MESSAGE value="initialize boards" />
     <MESSAGE value="image folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="image folder" />
+    <MESSAGE value="basic board display" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic board display" />
   </component>
 </project>
