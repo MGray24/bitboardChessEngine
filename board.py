@@ -23,7 +23,7 @@ class Board:
         self.white_pos = 0
         self.black_pos = 0
         self.both_pos = 0
-        self.setColorBoards()
+        self.set_color_coards()
         self.side_to_move = 'white'
         self.castling_rights = 0b1111  # WK, WQ, BK, BQ
         self.en_passant_square = None # stores a square where en passant is possible 0-63
@@ -31,7 +31,7 @@ class Board:
         self.fullmove_number = 0 # number of full moves for stats
 
 
-    def setColorBoards(self):
+    def set_color_boards(self):
         self.white_pos = 0
         for piece in self.whitepieces:
             self.white_pos = self.white_pos | piece.bitboard
@@ -41,5 +41,7 @@ class Board:
             self.black_pos = self.black_pos | piece.bitboard
 
         self.both_pos = self.white_pos | self.black_pos
+
+    def make_move(self):
 
     
