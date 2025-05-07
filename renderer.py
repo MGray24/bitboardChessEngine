@@ -6,7 +6,7 @@ class Renderer:
         # set with set_screen
         self.screen = screen
         self.width, self.height = 0, 0
-        self.DRAW_START = 0  # where to put top left corner of board
+        self.DRAW_START = (0,0)  # where to put top left corner of board
         self.SQUARE_SIZE = 0
         self.BOARD_SIZE = 0
         self.images = {}
