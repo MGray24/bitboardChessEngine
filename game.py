@@ -8,7 +8,6 @@ class Game:
         #self.legal_moves = self.board.generate_legal_moves()
 
     def handle_click(self, square):
-        '''
         if self.selected_square is None:
             # First click: select piece
             piece = self.board.get_piece_at(square)
@@ -17,11 +16,13 @@ class Game:
         else:
             # Second click: attempt move
             move = Move(self.selected_square, square)
+            '''
             if move in self.legal_moves:
                 self.board.make_move(move)
                 self.legal_moves = self.board.generate_legal_moves()
+            '''
+            self.board.make_move(move)
             self.selected_square = None  # Reset either way
-        '''
     def get_highlighted_squares(self):
         '''
         if self.selected_square is None:

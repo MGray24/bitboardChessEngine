@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70ca91cf-b000-4a4a-8066-ee927ff71a89" name="Changes" comment="renamed methods">
+    <list default="true" id="70ca91cf-b000-4a4a-8066-ee927ff71a89" name="Changes" comment="basic move class implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/renderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746491061937</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="basic move class implemented">
+      <option name="closed" value="true" />
+      <created>1746592947634</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1746592947634</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -171,6 +180,7 @@
     <MESSAGE value="basic board display" />
     <MESSAGE value="move class setup and game class setup" />
     <MESSAGE value="renamed methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="renamed methods" />
+    <MESSAGE value="basic move class implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic move class implemented" />
   </component>
 </project>
