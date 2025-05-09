@@ -34,7 +34,7 @@ class Board:
         self.en_passant_square = None # stores a square where en passant is possible 0-63
         self.halfmove_clock = 0 # for 50 move rule
         self.fullmove_number = 0 # number of full moves for stats
-        move = Move(0, 11)
+        move = Move(0, 0)
         self.make_move(move)
 
     def set_color_boards(self):
