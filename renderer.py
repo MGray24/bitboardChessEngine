@@ -13,6 +13,7 @@ class Renderer:
         # set with set_screen ^^^^^
         self.set_screen() # resets dimensions of screen and variables that depend on it
 
+        self.SELECT_COLOR = (183, 65, 14)
         self.LIGHT_COLOR = (240, 217, 181)
         self.DARK_COLOR = (181, 136, 99)
         self.FONT_COLOR = (0, 0, 0)
@@ -41,11 +42,13 @@ class Renderer:
         self.BOARD_SIZE = self.SQUARE_SIZE * 8
         self.images = self.load_piece_images("assets")
 
-    def draw_board(self):
+    def draw_board(self, selected_square=None):
         self.screen.fill("gray30")
         for rank in range(8):
             for file in range(8):
                 color = self.LIGHT_COLOR if (rank + file) % 2 == 0 else self.DARK_COLOR
+                if (selected_square is not None and rank*8+file == selected_square):
+                    color = self.SELECT_COLOR
                 rect = pygame.Rect(file * self.SQUARE_SIZE + self.DRAW_START[0], (7 - rank) * self.SQUARE_SIZE + self.DRAW_START[1], self.SQUARE_SIZE, self.SQUARE_SIZE)
                 pygame.draw.rect(self.screen, color, rect)
 
