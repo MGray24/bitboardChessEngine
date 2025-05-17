@@ -53,6 +53,20 @@ class Board:
                 return piece
         return None
 
+    def get_set_bits(self, bitboard): # returns numbers 0-63, representing bits that are set
+        while bitboard:
+            lsb = bitboard & -bitboard
+            square = lsb.bit_length() - 1
+            yield square
+            bitboard &= bitboard - 1
+
+    def generate_legal_moves(self):
+        moves = []
+        active_pieces = self.whitepieces if self.side_to_move == 'white' else self.blackpieces
+        for piece in active_pieces:
+            moves.extend(piece.generate_moves(self))
+        return moves
+
     def make_move(self, move):
         # 1. Identify the moving piece
         piece = self.get_piece_at(move.from_square)

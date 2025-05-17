@@ -27,7 +27,7 @@ def main():
                 square_number = int(row * 8 + column)
                 print(f"Row: {row}, Column: {column}, {square_number}")
                 game.handle_click(square_number)
-        renderer.draw_board(game.selected_square)
+        renderer.draw_board(game.get_highlight_squares())
         renderer.draw_pieces(game.board)
         pygame.display.flip()
 
