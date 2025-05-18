@@ -11,7 +11,8 @@ class Move:
     def __eq__(self, other):
         return (self.from_square == other.from_square and
                 self.to_square == other.to_square and
-                self.promotion == other.promotion)
+                self.promotion == other.promotion and
+                self.is_en_passant == other.is_en_passant)
 
     def __hash__(self):
         return hash((self.from_square, self.to_square, self.promotion))

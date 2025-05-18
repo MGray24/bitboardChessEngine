@@ -68,6 +68,14 @@ class Board:
         return moves
 
     def make_move(self, move):
+        #set en passant square
+        if move.piece_type == 'P' and abs(move.from_square - move.to_square) == 16:
+            # Pawn double move
+            direction = -8 if self.side_to_move == 'white' else 8
+            self.en_passant_square = move.to_square + direction
+        else:
+            self.en_passant_square = None
+
         # 1. Identify the moving piece
         piece = self.get_piece_at(move.from_square)
         if not piece:
