@@ -25,7 +25,7 @@ def main():
                 column = adjusted_x // renderer.SQUARE_SIZE
                 row = 7 - adjusted_y // renderer.SQUARE_SIZE 
                 square_number = int(row * 8 + column)
-                print(f"Row: {row}, Column: {column}, {square_number}")
+                #print(f"Row: {row}, Column: {column}, {square_number}")
                 game.handle_click(square_number)
         renderer.draw_board(game.get_highlight_squares())
         renderer.draw_pieces(game.board)

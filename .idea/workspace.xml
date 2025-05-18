@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70ca91cf-b000-4a4a-8066-ee927ff71a89" name="Changes" comment="added knight move checking, square highlights">
+    <list default="true" id="70ca91cf-b000-4a4a-8066-ee927ff71a89" name="Changes" comment="working on pawn move validation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/move.py" beforeDir="false" afterPath="$PROJECT_DIR$/move.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pieces.py" beforeDir="false" afterPath="$PROJECT_DIR$/pieces.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747519832080</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="working on pawn move validation">
+      <option name="closed" value="true" />
+      <created>1747585720287</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1747585720287</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -210,6 +219,7 @@
     <MESSAGE value="move pieces by clicking" />
     <MESSAGE value="color on click" />
     <MESSAGE value="added knight move checking, square highlights" />
-    <option name="LAST_COMMIT_MESSAGE" value="added knight move checking, square highlights" />
+    <MESSAGE value="working on pawn move validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on pawn move validation" />
   </component>
 </project>

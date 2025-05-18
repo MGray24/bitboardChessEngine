@@ -25,9 +25,7 @@ class Board:
             "black": 0,  # all squares occupied by black pieces
             "both": 0,  # all squares with any piece
         }
-        self.white_pos = 0
-        self.black_pos = 0
-        self.both_pos = 0
+
         self.set_color_boards()
         self.side_to_move = 'white'
         self.castling_rights = 0b1111  # WK, WQ, BK, BQ
@@ -38,11 +36,12 @@ class Board:
     def set_color_boards(self):
         self.occupancy["white"] = 0
         for piece in self.whitepieces:
-            self.occupancy["white"] = self.white_pos | piece.bitboard
+            self.occupancy["white"] |= piece.bitboard
+
 
         self.occupancy["black"] = 0
         for piece in self.blackpieces:
-            self.occupancy["black"] = self.black_pos | piece.bitboard
+            self.occupancy["black"] |= piece.bitboard
 
         self.occupancy["both"] = self.occupancy["white"] | self.occupancy["black"]
 
@@ -88,6 +87,10 @@ class Board:
         captured = self.get_piece_at(move.to_square)
         if captured:
             captured.bitboard &= ~(1 << move.to_square)
+        if move.is_en_passant:
+            direction = -8 if self.side_to_move == 'white' else 8
+            captured_pawn_type = self.get_piece_at(move.to_square+direction)
+            captured_pawn_type.bitboard &= ~(1 << (move.to_square+direction))
 
         # 4. Place the piece on the new square
         piece.bitboard |= (1 << move.to_square)
@@ -103,5 +106,6 @@ class Board:
         # 6. Update game state
         self.side_to_move = 'black' if self.side_to_move == 'white' else 'white'
         self.set_color_boards()
+
 
 
