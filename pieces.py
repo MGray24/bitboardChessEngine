@@ -166,7 +166,38 @@ class Bishop(Piece):
         super().__init__(color, 'B', 0x0000000000000024, 0x2400000000000000)
 
     def generate_moves(self, board):
-        return []
+        moves = []
+        occupancy = board.occupancy[self.color]
+        enemy = board.occupancy['black' if self.color == 'white' else 'white']
+        all_occ = board.occupancy['both']
+
+        for from_square in board.get_set_bits(self.bitboard):
+            for direction in [9, -7, -9, 7]:
+                to_square = from_square
+                while True:
+                    to_square += direction
+
+                    # Stop if out of bounds
+                    if to_square < 0 or to_square >= 64:
+                        break
+
+                    # Prevent wrapping around the board diagonally
+                    file_diff = abs((from_square % 8) - (to_square % 8))
+                    rank_diff = abs((from_square // 8) - (to_square // 8))
+                    if file_diff != rank_diff:
+                        break
+
+                    if (occupancy >> to_square) & 1:
+                        break  # friendly piece blocking
+
+                    captured = None
+                    if (enemy >> to_square) & 1:
+                        captured = board.get_piece_at(to_square)
+                        moves.append(Move(from_square, to_square, piece_type='B', captured_piece=captured))
+                        break  # enemy piece captured; stop ray
+
+                    moves.append(Move(from_square, to_square, piece_type='B'))
+        return moves
 
 class Rook(Piece):
     def __init__(self, color):
