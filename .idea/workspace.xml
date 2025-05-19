@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70ca91cf-b000-4a4a-8066-ee927ff71a89" name="Changes" comment="rook moves">
+    <list default="true" id="70ca91cf-b000-4a4a-8066-ee927ff71a89" name="Changes" comment="bishop moves">
       <change beforePath="$PROJECT_DIR$/pieces.py" beforeDir="false" afterPath="$PROJECT_DIR$/pieces.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -201,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747622715844</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="bishop moves">
+      <option name="closed" value="true" />
+      <created>1747623085068</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1747623085068</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -234,6 +242,7 @@
     <MESSAGE value="working on pawn move validation" />
     <MESSAGE value="pawns and knights work, except promotion" />
     <MESSAGE value="rook moves" />
-    <option name="LAST_COMMIT_MESSAGE" value="rook moves" />
+    <MESSAGE value="bishop moves" />
+    <option name="LAST_COMMIT_MESSAGE" value="bishop moves" />
   </component>
 </project>

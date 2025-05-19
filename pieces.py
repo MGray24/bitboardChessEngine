@@ -241,7 +241,42 @@ class Queen(Piece):
         super().__init__(color, 'Q', 0x0000000000000008, 0x0800000000000000)
 
     def generate_moves(self, board):
-        return []
+        moves = []
+        occupancy = board.occupancy[self.color]
+        enemy = board.occupancy['black' if self.color == 'white' else 'white']
+        all_occ = board.occupancy['both']
+
+        for from_square in board.get_set_bits(self.bitboard):
+            for direction in [8, -8, 1, -1, 9, -7, -9, 7]:
+                to_square = from_square
+                while True:
+                    to_square += direction
+
+                    # Stop if out of bounds
+                    if to_square < 0 or to_square >= 64:
+                        break
+
+                    # Prevent horizontal or diagonal wrap
+                    file_diff = abs((from_square % 8) - (to_square % 8))
+                    rank_diff = abs((from_square // 8) - (to_square // 8))
+                    if direction == 1 and to_square % 8 == 0:  # wrapped from h to a
+                        break
+                    if direction == -1 and to_square % 8 == 7:  # wrapped from a to h
+                        break
+                    if direction in [9, -7, -9, 7] and file_diff != rank_diff:
+                        break  # diagonal wrap
+
+                    if (occupancy >> to_square) & 1:
+                        break  # own piece blocks
+
+                    captured = None
+                    if (enemy >> to_square) & 1:
+                        captured = board.get_piece_at(to_square)
+                        moves.append(Move(from_square, to_square, piece_type='Q', captured_piece=captured))
+                        break  # capture, then stop
+
+                    moves.append(Move(from_square, to_square, piece_type='Q'))
+        return moves
 
 class King(Piece):
     def __init__(self, color):
