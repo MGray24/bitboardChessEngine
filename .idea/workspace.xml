@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70ca91cf-b000-4a4a-8066-ee927ff71a89" name="Changes" comment="move pieces by clicking">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/renderer.py" afterDir="false" />
+    <list default="true" id="70ca91cf-b000-4a4a-8066-ee927ff71a89" name="Changes" comment="bishop moves">
+      <change beforePath="$PROJECT_DIR$/pieces.py" beforeDir="false" afterPath="$PROJECT_DIR$/pieces.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,10 +49,12 @@
   "keyToString": {
     "Python.board.executor": "Run",
     "Python.main.executor": "Run",
+    "Python.pieces.executor": "Run",
     "Python.renderer.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/24gra/PycharmProjects/mar"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -161,7 +161,55 @@
       <option name="project" value="LOCAL" />
       <updated>1746832237588</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="color on click">
+      <option name="closed" value="true" />
+      <created>1746836929885</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1746836929885</updated>
+    </task>
+    <task id="LOCAL-00013" summary="added knight move checking, square highlights">
+      <option name="closed" value="true" />
+      <created>1747519832080</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1747519832080</updated>
+    </task>
+    <task id="LOCAL-00014" summary="working on pawn move validation">
+      <option name="closed" value="true" />
+      <created>1747585720287</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1747585720287</updated>
+    </task>
+    <task id="LOCAL-00015" summary="pawns and knights work, except promotion">
+      <option name="closed" value="true" />
+      <created>1747594689700</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1747594689700</updated>
+    </task>
+    <task id="LOCAL-00016" summary="rook moves">
+      <option name="closed" value="true" />
+      <created>1747622715844</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1747622715844</updated>
+    </task>
+    <task id="LOCAL-00017" summary="bishop moves">
+      <option name="closed" value="true" />
+      <created>1747623085068</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1747623085068</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -189,6 +237,12 @@
     <MESSAGE value="renamed methods" />
     <MESSAGE value="basic move class implemented" />
     <MESSAGE value="move pieces by clicking" />
-    <option name="LAST_COMMIT_MESSAGE" value="move pieces by clicking" />
+    <MESSAGE value="color on click" />
+    <MESSAGE value="added knight move checking, square highlights" />
+    <MESSAGE value="working on pawn move validation" />
+    <MESSAGE value="pawns and knights work, except promotion" />
+    <MESSAGE value="rook moves" />
+    <MESSAGE value="bishop moves" />
+    <option name="LAST_COMMIT_MESSAGE" value="bishop moves" />
   </component>
 </project>

@@ -13,7 +13,6 @@ class Renderer:
         # set with set_screen ^^^^^
         self.set_screen() # resets dimensions of screen and variables that depend on it
 
-        self.SELECT_COLOR = (183, 65, 14)
         self.LIGHT_COLOR = (240, 217, 181)
         self.DARK_COLOR = (181, 136, 99)
         self.FONT_COLOR = (0, 0, 0)
@@ -42,7 +41,7 @@ class Renderer:
         self.BOARD_SIZE = self.SQUARE_SIZE * 8
         self.images = self.load_piece_images("assets")
 
-    def draw_board(self, selected_square=None):
+    def draw_board(self, highlight_squares=None):
         self.screen.fill("gray30")
         for rank in range(8):
             for file in range(8):
