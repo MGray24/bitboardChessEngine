@@ -173,7 +173,37 @@ class Rook(Piece):
         super().__init__(color, 'R', 0x0000000000000081, 0x8100000000000000)
 
     def generate_moves(self, board):
-        return []
+        moves = []
+        occupancy = board.occupancy[self.color]
+        enemy = board.occupancy['black' if self.color == 'white' else 'white']
+        all_occ = board.occupancy['both']
+
+        for from_square in board.get_set_bits(self.bitboard):
+            for direction in [8, -8, 1, -1]:  # up, down, right, left
+                to_square = from_square
+                while True:
+                    # Step one square in that direction
+                    to_square += direction
+
+                    # Board bounds check
+                    if to_square < 0 or to_square >= 64:
+                        break
+                    if direction == 1 and to_square % 8 == 0:  # wrapped from h to a
+                        break
+                    if direction == -1 and to_square % 8 == 7:  # wrapped from a to h
+                        break
+
+                    if (occupancy >> to_square) & 1:
+                        break  # Blocked by own piece
+
+                    captured = None
+                    if (enemy >> to_square) & 1:
+                        captured = board.get_piece_at(to_square)
+                        moves.append(Move(from_square, to_square, piece_type='R', captured_piece=captured))
+                        break  # Can capture but can't go further
+                    else:
+                        moves.append(Move(from_square, to_square, piece_type='R'))
+        return moves
 
 class Queen(Piece):
     def __init__(self, color):
