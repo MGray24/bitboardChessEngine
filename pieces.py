@@ -283,4 +283,31 @@ class King(Piece):
         super().__init__(color, 'K', 0x0000000000000010, 0x1000000000000000)
 
     def generate_moves(self, board):
-        return []
+        moves = []
+        occupancy = board.occupancy[self.color]
+        enemy = board.occupancy['black' if self.color == 'white' else 'white']
+
+        for from_square in board.get_set_bits(self.bitboard):
+            for direction in [8, -8, 1, -1, 9, -7, -9, 7]:
+                to_square = from_square + direction
+
+                # Check bounds
+                if to_square < 0 or to_square >= 64:
+                    continue
+
+                # Prevent wrapping (like from h1 → a2)
+                file_diff = abs((from_square % 8) - (to_square % 8))
+                rank_diff = abs((from_square // 8) - (to_square // 8))
+                if file_diff > 1 or rank_diff > 1:
+                    continue
+
+                if (occupancy >> to_square) & 1:
+                    continue  # can't move onto own piece
+
+                captured = None
+                if (enemy >> to_square) & 1:
+                    captured = board.get_piece_at(to_square)
+
+                moves.append(Move(from_square, to_square, piece_type='K', captured_piece=captured))
+
+        return moves
