@@ -49,7 +49,8 @@ class Renderer:
                 color = self.LIGHT_COLOR if (rank + file) % 2 == 0 else self.DARK_COLOR
                 if (selected_square is not None and rank*8+file == selected_square):
                     color = self.SELECT_COLOR
-                rect = pygame.Rect(file * self.SQUARE_SIZE + self.DRAW_START[0], (7 - rank) * self.SQUARE_SIZE + self.DRAW_START[1], self.SQUARE_SIZE, self.SQUARE_SIZE)
+                rect = pygame.Rect(file * self.SQUARE_SIZE + self.DRAW_START[0], 
+                (7 - rank) * self.SQUARE_SIZE + self.DRAW_START[1], self.SQUARE_SIZE, self.SQUARE_SIZE)
                 pygame.draw.rect(self.screen, color, rect)
 
     def draw_pieces(self, board):
