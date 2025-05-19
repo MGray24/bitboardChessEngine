@@ -46,7 +46,7 @@ class Renderer:
         for rank in range(8):
             for file in range(8):
                 color = self.LIGHT_COLOR if (rank + file) % 2 == 0 else self.DARK_COLOR
-                if (selected_square is not None and rank*8+file == selected_square):
+                if (highlight_squares is not None and rank*8+file == highlight_squares):
                     color = self.SELECT_COLOR
                 rect = pygame.Rect(file * self.SQUARE_SIZE + self.DRAW_START[0], 
                 (7 - rank) * self.SQUARE_SIZE + self.DRAW_START[1], self.SQUARE_SIZE, self.SQUARE_SIZE)
