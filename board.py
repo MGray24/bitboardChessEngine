@@ -29,6 +29,10 @@ class Board:
         self.set_color_boards()
         self.side_to_move = 'white'
         self.castling_rights = 0b1111  # WK, WQ, BK, BQ
+        self.WHITE_KINGSIDE = 0b0001
+        self.WHITE_QUEENSIDE = 0b0010
+        self.BLACK_KINGSIDE = 0b0100
+        self.BLACK_QUEENSIDE = 0b1000
         self.en_passant_square = None # stores a square where en passant is possible 0-63
         self.halfmove_clock = 0 # for 50 move rule
         self.fullmove_number = 0 # number of full moves for stats
@@ -75,6 +79,34 @@ class Board:
         else:
             self.en_passant_square = None
 
+        # King moved
+        if move.piece_type == 'K':
+            if self.side_to_move == 'white':
+                self.castling_rights &= ~(self.WHITE_KINGSIDE | self.WHITE_QUEENSIDE)
+            else:
+                self.castling_rights &= ~(self.BLACK_KINGSIDE | self.BLACK_QUEENSIDE)
+
+        # Rook moved
+        elif move.piece_type == 'R':
+            if move.from_square == 0:
+                self.castling_rights &= ~self.WHITE_QUEENSIDE
+            elif move.from_square == 7:
+                self.castling_rights &= ~self.WHITE_KINGSIDE
+            elif move.from_square == 56:
+                self.castling_rights &= ~self.BLACK_QUEENSIDE
+            elif move.from_square == 63:
+                self.castling_rights &= ~self.BLACK_KINGSIDE
+
+        if move.is_castle:
+            if move.to_square == 6:  # White kingside
+                self.move_rook(7, 5)
+            elif move.to_square == 2:  # White queenside
+                self.move_rook(0, 3)
+            elif move.to_square == 62:  # Black kingside
+                self.move_rook(63, 61)
+            elif move.to_square == 58:  # Black queenside
+                self.move_rook(56, 59)
+
         # 1. Identify the moving piece
         piece = self.get_piece_at(move.from_square)
         if not piece:
@@ -106,6 +138,23 @@ class Board:
         # 6. Update game state
         self.side_to_move = 'black' if self.side_to_move == 'white' else 'white'
         self.set_color_boards()
+
+    def move_rook(self, from_sq, to_sq):
+        rook_list = self.whitepieces if self.side_to_move == 'white' else self.blackpieces
+        for piece in rook_list:
+            if piece.name == 'R' and (piece.bitboard >> from_sq) & 1:
+                piece.bitboard &= ~(1 << from_sq)
+                piece.bitboard |= (1 << to_sq)
+                break
+
+    def is_empty(self, square):
+        return not ((self.occupancy['both'] >> square) & 1)
+
+    def is_square_attacked(self, square, by_color):
+        # For now, just return False to allow castling
+        # Later you can implement proper check detection here
+        return False
+
 
 
 

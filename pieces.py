@@ -310,4 +310,33 @@ class King(Piece):
 
                 moves.append(Move(from_square, to_square, piece_type='K', captured_piece=captured))
 
+        if self.color == 'white':
+            king_start = 4  # e1
+            if board.castling_rights & board.WHITE_KINGSIDE:
+                if board.is_empty(5) and board.is_empty(6):
+                    if not board.is_square_attacked(4, 'black') and \
+                            not board.is_square_attacked(5, 'black') and \
+                            not board.is_square_attacked(6, 'black'):
+                        moves.append(Move(4, 6, piece_type='K', is_castle=True))
+            if board.castling_rights & board.WHITE_QUEENSIDE:
+                if board.is_empty(1) and board.is_empty(2) and board.is_empty(3):
+                    if not board.is_square_attacked(4, 'black') and \
+                            not board.is_square_attacked(3, 'black') and \
+                            not board.is_square_attacked(2, 'black'):
+                        moves.append(Move(4, 2, piece_type='K', is_castle=True))
+        else:
+            king_start = 60  # e8
+            if board.castling_rights & board.BLACK_KINGSIDE:
+                if board.is_empty(61) and board.is_empty(62):
+                    if not board.is_square_attacked(60, 'white') and \
+                            not board.is_square_attacked(61, 'white') and \
+                            not board.is_square_attacked(62, 'white'):
+                        moves.append(Move(60, 62, piece_type='K', is_castle=True))
+            if board.castling_rights & board.BLACK_QUEENSIDE:
+                if board.is_empty(57) and board.is_empty(58) and board.is_empty(59):
+                    if not board.is_square_attacked(60, 'white') and \
+                            not board.is_square_attacked(59, 'white') and \
+                            not board.is_square_attacked(58, 'white'):
+                        moves.append(Move(60, 58, piece_type='K', is_castle=True))
+
         return moves
