@@ -1,6 +1,7 @@
 from board import Board
 from move import Move
 from renderer import Renderer
+from engine import Engine
 
 '''
 if state == 'checkmate':
@@ -20,6 +21,14 @@ class Game:
         self.legal_moves = self.board.generate_legal_moves()
         self.highlights = {}
         self.last_move = None
+        self.engine = Engine()
+
+    def make_engine_move(self):
+        move = self.engine.choose_move(self.board)
+        if move:
+            self.board.make_move(move)
+            self.legal_moves = self.board.generate_legal_moves()
+            self.last_move = move
 
     def handle_click(self, x, y, renderer):
         if renderer.board_rect.collidepoint(x, y):

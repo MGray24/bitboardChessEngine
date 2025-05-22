@@ -20,6 +20,9 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = event.pos
                 game.handle_click(x, y, renderer)
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    game.make_engine_move()
         renderer.draw_board(game.get_highlight_squares())
         renderer.draw_pieces(game.board)
         pygame.display.flip()
