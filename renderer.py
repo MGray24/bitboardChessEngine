@@ -13,6 +13,7 @@ class Renderer:
         # set with set_screen ^^^^^
         self.set_screen() # resets dimensions of screen and variables that depend on it
 
+        self.board_rect = pygame.rect.Rect(self.DRAW_START[0], self.DRAW_START[1], self.BOARD_SIZE, self.BOARD_SIZE)
         self.LIGHT_COLOR = (240, 217, 181)
         self.DARK_COLOR = (181, 136, 99)
         self.FONT_COLOR = (0, 0, 0)

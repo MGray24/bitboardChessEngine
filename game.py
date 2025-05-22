@@ -1,5 +1,6 @@
 from board import Board
 from move import Move
+from renderer import Renderer
 
 '''
 if state == 'checkmate':
@@ -20,46 +21,54 @@ class Game:
         self.highlights = {}
         self.last_move = None
 
-    def handle_click(self, square):
-        if self.selected_square is None:
-            # First click: select piece
-            piece = self.board.get_piece_at(square)
-            if piece and piece.color == self.board.side_to_move:
-                self.selected_square = square
-                self.legal_moves = self.board.generate_legal_moves() #generate moves from this square
-        else:
-            # Second click: attempt move
-            # Get all matching from → to moves
-            candidates = [
-                move for move in self.legal_moves
-                if move.from_square == self.selected_square and move.to_square == square
-            ]
+    def handle_click(self, x, y, renderer):
+        if renderer.board_rect.collidepoint(x, y):
+            # Adjust for the board's starting position
+            adjusted_x = x - renderer.DRAW_START[0]
+            adjusted_y = y - renderer.DRAW_START[1]
+            column = adjusted_x // renderer.SQUARE_SIZE
+            row = 7 - adjusted_y // renderer.SQUARE_SIZE
+            square = int(row * 8 + column)
+            # print(f"Row: {row}, Column: {column}, {square_number}")
+            if self.selected_square is None:
+                # First click: select piece
+                piece = self.board.get_piece_at(square)
+                if piece and piece.color == self.board.side_to_move:
+                    self.selected_square = square
+                    self.legal_moves = self.board.generate_legal_moves() #generate moves from this square
+            else:
+                # Second click: attempt move
+                # Get all matching from → to moves
+                candidates = [
+                    move for move in self.legal_moves
+                    if move.from_square == self.selected_square and move.to_square == square
+                ]
 
-            if not candidates:
-                self.selected_square = None
-                return
+                if not candidates:
+                    self.selected_square = None
+                    return
 
-            # If none of the matching moves are promotions, there's only one valid option
-            non_promos = [m for m in candidates if m.promotion is None]
-            if len(non_promos) == 1:
-                self.board.make_move(non_promos[0])
-                self.legal_moves = self.board.generate_legal_moves()
-                self.last_move = non_promos[0]
-                self.selected_square = None
-                return
-
-            # Otherwise, this is a promotion — ask the player what piece they want
-            promoted_piece = self.prompt_for_promotion()
-
-            # Find the matching promotion move
-            for move in candidates:
-                if move.promotion == promoted_piece:
-                    self.board.make_move(move)
+                # If none of the matching moves are promotions, there's only one valid option
+                non_promos = [m for m in candidates if m.promotion is None]
+                if len(non_promos) == 1:
+                    self.board.make_move(non_promos[0])
                     self.legal_moves = self.board.generate_legal_moves()
-                    self.last_move = move
-                    break
+                    self.last_move = non_promos[0]
+                    self.selected_square = None
+                    return
 
-            self.selected_square = None  # Reset either way
+                # Otherwise, this is a promotion — ask the player what piece they want
+                promoted_piece = self.prompt_for_promotion()
+
+                # Find the matching promotion move
+                for move in candidates:
+                    if move.promotion == promoted_piece:
+                        self.board.make_move(move)
+                        self.legal_moves = self.board.generate_legal_moves()
+                        self.last_move = move
+                        break
+
+                self.selected_square = None  # Reset either way
 
     def get_highlight_squares(self):
         highlights = {}
