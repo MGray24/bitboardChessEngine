@@ -285,7 +285,8 @@ class King(Piece):
     def generate_moves(self, board):
         moves = []
         occupancy = board.occupancy[self.color]
-        enemy = board.occupancy['black' if self.color == 'white' else 'white']
+        opp_color = 'black' if self.color == 'white' else 'white'
+        enemy = board.occupancy[opp_color]
 
         for from_square in board.get_set_bits(self.bitboard):
             for direction in [8, -8, 1, -1, 9, -7, -9, 7]:
@@ -303,6 +304,10 @@ class King(Piece):
 
                 if (occupancy >> to_square) & 1:
                     continue  # can't move onto own piece
+
+                # Check if the destination is attacked
+                if board.is_square_attacked(to_square, opp_color):
+                    continue
 
                 captured = None
                 if (enemy >> to_square) & 1:
