@@ -21,9 +21,10 @@ class Game:
         self.legal_moves = self.board.generate_legal_moves()
         self.highlights = {}
         self.last_move = None
-        self.engine = Engine()
+        self.engine = Engine(2)
 
-    def make_engine_move(self):
+    def make_engine_move(self, color):
+        self.engine.color = color
         move = self.engine.choose_move(self.board)
         if move:
             self.board.make_move(move)
